@@ -6,29 +6,33 @@ const fs = require('fs');
 // CHANGE THESE STUDY IDS TO WHAT YOU WANT
 const studyIds = []
 // THIS IS THE FILE
-const outputFileName = 'recruitmentStatusChanges.csv'
+const outputFileName = 'recruitmentStatusChanges - GL.csv'
 
 const baseUrl = 'https://clinicaltrials.gov/ct2/history'
 
 
 async function readStudyList() {
-    const file = fs.createReadStream('StudyList.csv');
+    const file = fs.createReadStream('nct numbers - GL.csv');
     var count = 0; // cache the running count
 
 
     return new Promise((resolve, reject) => {
+
         Papa.parse(file, {
             header: true,
             dynamicTyping: false,
             step: function (result) {
-                studyIds.push(result.data["﻿NCTID"].replace('NCT', ''))
-                console.log('Oh Hi')
+                let  nctNumber = result.data["NCT_ID"]
+                studyIds.push(nctNumber.replace('NCT', ''))
             },
             complete: function (results, file) {
                 console.log('Done parsing!');
 
                 // scrapeRecruitmentStatus()
                 resolve(studyIds)
+            },
+            error: function(e) {
+                console.error(e)
             }
         });
     }
