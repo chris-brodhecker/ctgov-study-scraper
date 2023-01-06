@@ -5,7 +5,10 @@ on:
       - GHA-testing-fake-master
       
 jobs:
-  Terraform_Plan:
+  Terraform_Deploy:
+    needs: Terraform_Plan
+    environment:
+        name: production
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -16,3 +19,15 @@ jobs:
         with:
           node-version: 16.13.x
       - run: npm run deploy
+    
+  Terraform_Plan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.13.x
+      - run: npm run plan
