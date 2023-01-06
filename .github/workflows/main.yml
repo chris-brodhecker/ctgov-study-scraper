@@ -3,13 +3,12 @@ on:
   pull_request:
     types: [opened]
     branches:
-      - master
       - GHA-testing-fake-master
 
 
 jobs:
   Terraform_Plan:
-    runs-on: [ ubuntu-latest, self-hosted, default ]
+    runs-on: ubuntu-latest
     container: 
       image: ubuntu-18.04
     steps:
@@ -21,3 +20,4 @@ jobs:
         with:
           node-version: 16.13.x
           cache: npm
+      - run: npm plan

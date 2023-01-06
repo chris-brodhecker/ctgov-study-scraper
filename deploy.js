@@ -1,0 +1,2 @@
+console.log("I AM NOW DEPLOYING SOMETHING")
+console.log("TF DEPLOY UPDATING AWS")
