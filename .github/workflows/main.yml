@@ -1,9 +1,5 @@
-name: Dummy Workflow
+name: On PR (tf plan) Dummy Workflow
 on:
-  push:
-    branches:
-      - GHA-Testing
-      - master
   pull_request:
     types: [opened]
     branches:
