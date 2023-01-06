@@ -1,13 +1,14 @@
 name: On PR (tf plan) Dummy Workflow
 on:
   pull_request:
-    types: [opened, synchronize]
+    types: [opened, reopened, synchronize]
     branches:
       - GHA-testing-fake-master
 
-
 jobs:
   Terraform_Plan:
+    environment:
+      name: dev
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
