@@ -15,3 +15,6 @@ Change that if you want to output to a different file
 
 # Running it
 Install the packages using `npm install` then run `npm run start`
+
+
+Dummy changes for GHA testing
