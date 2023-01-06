@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - GHA-testing-fake-master
-      - GHA-Testing
       
 jobs:
   Terraform_Plan:
