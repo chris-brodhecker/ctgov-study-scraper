@@ -20,4 +20,4 @@ jobs:
         with:
           node-version: 16.13.x
           cache: npm
-      - run: npm plan
+      - run: npm run plan

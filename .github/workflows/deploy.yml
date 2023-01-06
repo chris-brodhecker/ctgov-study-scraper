@@ -17,4 +17,4 @@ jobs:
         with:
           node-version: 16.13.x
           cache: npm
-      - run: npm deploy
+      - run: npm run deploy
